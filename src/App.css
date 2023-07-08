@@ -3,12 +3,40 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(244, 248, 248);
 }
 .usersMap {
   height: 20%;
   width: 50%;
   margin: 10px;
   border: 1px solid;
+  border-radius: 20px;
   background-color: rgb(233, 237, 237);
   text-shadow: 4px;
+}
+.container {
+  /* display: row;
+  flex-direction: column; */
+  align-items: center;
+}
+
+.form-container {
+  max-width: 500px;
+  margin-top: 3rem;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.text-danger {
+  color: red;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+  width: 150px;
+  margin: 0.5rem;
+  
 }

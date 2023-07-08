@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { BASE_URL } from "./Helper";
+import { toast } from "react-toastify";
 
 const UpdateUserForm = ({ user, updateUser }) => {
   // Validation schema
@@ -29,6 +30,7 @@ const UpdateUserForm = ({ user, updateUser }) => {
     try {
       await axios.put(`${BASE_URL}/user/update/${user._id}`, values);
       updateUser(user._id, values);
+      toast.success("User is Updated..");
     } catch (error) {
       console.log(error);
     }

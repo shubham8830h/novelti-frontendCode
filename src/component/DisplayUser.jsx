@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import UpdateUserForm from "./UpdateUserForm";
 import { BASE_URL } from "./Helper";
+import { toast } from "react-toastify";
 
 const DisplayUser = () => {
   const [displayUser, setDisplayUser] = useState([]);
@@ -27,8 +28,10 @@ const DisplayUser = () => {
       setDisplayUser((prevUsers) =>
         prevUsers.filter((user) => user._id !== id)
       );
+      toast.success("User is Deleted..");
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -51,7 +54,7 @@ const DisplayUser = () => {
     <>
       <h1>Users</h1>
       {displayUser.map((user) => (
-        <Container key={user._id} className="usersMap">
+        <Container key={user._id} className="usersMap container">
           <h1>FirstName: {user.firstName}</h1>
           <h1>LastName: {user.lastName}</h1>
           <h4>Email: {user.email}</h4>
@@ -61,16 +64,18 @@ const DisplayUser = () => {
           <p>State: {user.state}</p>
           <p>Country: {user.country}</p>
           <p>zipCode: {user.zipCode}</p>
-          <Button variant="primary" onClick={() => handleDelete(user._id)}>
-            Delete
-          </Button>
-          {updateUserId === user._id ? (
-            <UpdateUserForm user={user} updateUser={updateUser} />
-          ) : (
-            <Button variant="primary" onClick={() => handleUpdate(user._id)}>
-              Update
+          <div className="button-container">
+            <Button variant="primary" onClick={() => handleDelete(user._id)}>
+              Delete
             </Button>
-          )}
+            {updateUserId === user._id ? (
+              <UpdateUserForm user={user} updateUser={updateUser} />
+            ) : (
+              <Button variant="primary" onClick={() => handleUpdate(user._id)}>
+                Update
+              </Button>
+            )}
+          </div>
         </Container>
       ))}
     </>

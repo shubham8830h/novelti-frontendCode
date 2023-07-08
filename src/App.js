@@ -4,11 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DisplayUser from "./component/DisplayUser";
 import UpdateUserForm from "./component/UpdateUserForm";
 import Header from "./component/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <ToastContainer/>
         <Header />
         <Routes>
           <Route path="/" element={<CreateUserForm />}></Route>
